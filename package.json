@@ -1,0 +1,20 @@
+{
+  "name": "repelthedark",
+  "version": "0.1.0",
+  "description": "Game about supernatural investigation and resolution",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test-server",
+    "test-server": "cd server && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halemaster/RepelTheDark.git"
+  },
+  "author": "hale9644",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/halemaster/RepelTheDark/issues"
+  },
+  "homepage": "https://github.com/halemaster/RepelTheDark#readme"
+}
