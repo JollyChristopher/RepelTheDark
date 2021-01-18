@@ -1,5 +1,4 @@
 const assert = require('assert');
-const MyRoomState = require('../../src/rooms/schema/MyRoomState').MyRoomState;
 
 describe('Array', function() {
   describe('#indexOf()', function() {

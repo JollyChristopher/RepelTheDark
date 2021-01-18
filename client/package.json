@@ -1,0 +1,71 @@
+{
+  "name": "repelthedark-client",
+  "version": "0.1.0",
+  "description": "Client for the Repel the Dark game",
+  "main": "main.js",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "start": "electron-forge start",
+    "test": "nyc --all --check-coverage=true --reporter=html mocha --reporter=mochawesome test/unit",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "hale9644",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@rollup/plugin-node-resolve": "^11.1.0",
+    "electron": "^11.2.0",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1",
+    "nyc": "^15.1.0",
+    "rollup": "^2.36.2"
+  },
+  "dependencies": {
+    "colyseus.js": "^0.14.1",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "nyc": {
+    "exclude": [
+      "coverage/**",
+      "mochawesome-report/**",
+      "out/**",
+      "test/**"
+    ],
+    "branches": 80,
+    "lines": 80,
+    "functions": 80,
+    "statements": 80
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "repelthedark_client"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}

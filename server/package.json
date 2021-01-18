@@ -30,6 +30,12 @@
     "express-jwt": "^6.0.0"
   },
   "nyc": {
+    "exclude": [
+      "coverage/**",
+      "mochawesome-report/**",
+      "loadtest/**",
+      "test/**"
+    ],
     "branches": 80,
     "lines": 80,
     "functions": 80,
