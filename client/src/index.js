@@ -1,3 +1,5 @@
+const Colyseus = require("colyseus.js"); 
+
 var client = new Colyseus.Client('ws://localhost:2567');
 
 client.joinOrCreate("my_room").then(room => {

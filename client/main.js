@@ -9,12 +9,13 @@ function createWindow() {
         }
     });
 
-    win.loadFile('html/index.html');
+    win.loadFile('dist/index.html');
 }
 
 app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
+    console.log(process.platform)
     if (process.platform !== 'darwin') {
         app.quit();
     }
