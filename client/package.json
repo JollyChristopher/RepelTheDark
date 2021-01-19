@@ -6,9 +6,12 @@
   "private": true,
   "scripts": {
     "build": "npx webpack && cp src/html/index.html dist/index.html",
+    "lint-fix": "npm run test-lint -- --fix",
     "prestart": "npm run build",
     "start": "electron-forge start",
-    "test": "nyc --all --check-coverage=true --reporter=html mocha --reporter=mochawesome test/unit/**",
+    "test": "npm run test-lint && npm run test-unit",
+    "test-lint": "semistandard --env mocha",
+    "test-unit": "nyc --all --check-coverage=true --reporter=html mocha --reporter=mochawesome test/unit/**",
     "prepackage": "npm run build",
     "package": "electron-forge package",
     "premake": "npm run build",
@@ -29,6 +32,7 @@
     "mochawesome": "^6.2.1",
     "nyc": "^15.1.0",
     "proxyquire": "^2.1.3",
+    "semistandard": "^16.0.0",
     "sinon": "^9.2.3",
     "webpack": "^5.15.0",
     "webpack-cli": "^4.3.1"
@@ -49,6 +53,14 @@
     "lines": 80,
     "functions": 80,
     "statements": 80
+  },
+  "semistandard": {
+    "ignore": [
+      "coverage/**",
+      "mochawesome-report/**",
+      "out/**",
+      "dist/**"
+    ]
   },
   "config": {
     "forge": {

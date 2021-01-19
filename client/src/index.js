@@ -1,9 +1,9 @@
-const Colyseus = require("colyseus.js"); 
+const Colyseus = require('colyseus.js');
 
-var client = new Colyseus.Client('ws://localhost:2567');
+const client = new Colyseus.Client('ws://localhost:2567');
 
-client.joinOrCreate("my_room").then(room => {
-    console.log(room.sessionId, "joined", room.name);
+client.joinOrCreate('my_room').then(room => {
+  console.log(room.sessionId, 'joined', room.name);
 }).catch(e => {
-    console.log("JOIN ERROR", e);
+  console.log('JOIN ERROR', e);
 });

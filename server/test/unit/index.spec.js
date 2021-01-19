@@ -1,11 +1,11 @@
 const proxyquire = require('proxyquire').noCallThru();
 const sinon = require('sinon');
 
-describe('Server Injection', function() {
-  afterEach(function() {
+describe('Server Injection', function () {
+  afterEach(function () {
     delete process.env.PORT;
   });
-  it('should load without port value', function() {
+  it('should load without port value', function () {
     const expressFake = {
       use: sinon.fake()
     };
@@ -14,13 +14,13 @@ describe('Server Injection', function() {
       listen: sinon.fake()
     };
     const includes = {
-      'http': {
+      http: {
         createServer: sinon.fake.returns('HTTP_SERVER')
       },
-      'express': sinon.fake.returns(expressFake),
-      'cors': sinon.fake.returns('CORS'),
-      'colyseus': {
-        Server: sinon.fake.returns(serverFake) 
+      express: sinon.fake.returns(expressFake),
+      cors: sinon.fake.returns('CORS'),
+      colyseus: {
+        Server: sinon.fake.returns(serverFake)
       },
       '@colyseus/monitor': {
         monitor: sinon.fake.returns('MONITOR')
@@ -30,7 +30,7 @@ describe('Server Injection', function() {
       }
     };
     includes.express.json = sinon.fake.returns('EXPRESS_JSON');
-    const main = proxyquire('../../src/index.js', includes);
+    proxyquire('../../src/index.js', includes);
     sinon.assert.calledOnce(includes.express);
     sinon.assert.calledOnce(includes.cors);
     sinon.assert.calledOnce(includes.express.json);
@@ -50,7 +50,7 @@ describe('Server Injection', function() {
     sinon.assert.calledOnce(serverFake.listen);
     sinon.assert.calledWith(serverFake.listen, 2567);
   });
-  it('should load with port value', function() {
+  it('should load with port value', function () {
     process.env.PORT = 5000;
     const expressFake = {
       use: sinon.fake()
@@ -60,13 +60,13 @@ describe('Server Injection', function() {
       listen: sinon.fake()
     };
     const includes = {
-      'http': {
+      http: {
         createServer: sinon.fake.returns('HTTP_SERVER')
       },
-      'express': sinon.fake.returns(expressFake),
-      'cors': sinon.fake.returns('CORS'),
-      'colyseus': {
-        Server: sinon.fake.returns(serverFake) 
+      express: sinon.fake.returns(expressFake),
+      cors: sinon.fake.returns('CORS'),
+      colyseus: {
+        Server: sinon.fake.returns(serverFake)
       },
       '@colyseus/monitor': {
         monitor: sinon.fake.returns('MONITOR')
@@ -76,7 +76,7 @@ describe('Server Injection', function() {
       }
     };
     includes.express.json = sinon.fake.returns('EXPRESS_JSON');
-    const main = proxyquire('../../src/index.js', includes);
+    proxyquire('../../src/index.js', includes);
     sinon.assert.calledOnce(includes.express);
     sinon.assert.calledOnce(includes.cors);
     sinon.assert.calledOnce(includes.express.json);
