@@ -4,6 +4,7 @@ const MyRoomState = require('./schema/MyRoomState').MyRoomState;
 exports.MyRoom = class extends colyseus.Room {
 
   onCreate (options) {
+    console.log(new MyRoomState())
     this.setState(new MyRoomState());
 
     this.onMessage("type", (client, message) => {
