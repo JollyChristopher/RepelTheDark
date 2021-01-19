@@ -3,7 +3,6 @@
   "name": "repelthedark-server",
   "version": "0.1.0",
   "description": "server for repelthedark",
-  "main": "index.js",
   "scripts": {
     "start": "node src/index.js || exit 0",
     "loadtest": "colyseus-loadtest loadtest/example.js --room my_room --numClients 2",

@@ -2,6 +2,7 @@
   "name": "repelthedark",
   "version": "0.1.0",
   "description": "Game about supernatural investigation and resolution",
+  "private": true,
   "scripts": {
     "build": "npm-run-all -p build-server build-client",
     "build-server": "cd server && npm install",
