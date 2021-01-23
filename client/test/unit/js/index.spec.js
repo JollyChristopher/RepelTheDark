@@ -8,7 +8,6 @@ describe('Colyseus Load', function () {
   });
   afterEach(function () {
     console = consolePrev; // eslint-disable-line no-global-assign
-    delete document;
   });
   it('join works', function () {
     console = { // eslint-disable-line no-global-assign
