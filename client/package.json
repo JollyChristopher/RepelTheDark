@@ -50,8 +50,6 @@
   "dependencies": {
     "colyseus.js": "^0.14.1",
     "electron-squirrel-startup": "^1.0.0",
-    "fomantic-ui": "^2.8.7",
-    "fomantic-ui-css": "^2.8.7",
     "jquery": "^3.5.1",
     "mithril": "^2.0.4"
   },
