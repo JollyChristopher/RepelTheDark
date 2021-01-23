@@ -13,10 +13,10 @@ describe('Colyseus Load', function () {
     console = { // eslint-disable-line no-global-assign
       log: sinon.fake()
     };
-    document = {
+    document = { // eslint-disable-line no-global-assign
       body: { }
     };
-    let includes = {
+    const includes = {
       'colyseus.js': {
         Client: sinon.fake.returns({
           joinOrCreate: sinon.fake.returns({
@@ -32,7 +32,7 @@ describe('Colyseus Load', function () {
           })
         })
       },
-      'mithril': sinon.fake()
+      mithril: sinon.fake()
     };
     includes.mithril.render = sinon.fake();
     proxyquire('../../../src/index.js', includes);
@@ -44,10 +44,10 @@ describe('Colyseus Load', function () {
     console = { // eslint-disable-line no-global-assign
       log: sinon.fake()
     };
-    document = {
+    document = { // eslint-disable-line no-global-assign
       body: { }
     };
-    let includes = {
+    const includes = {
       'colyseus.js': {
         Client: sinon.fake.returns({
           joinOrCreate: sinon.fake.returns({
@@ -61,7 +61,7 @@ describe('Colyseus Load', function () {
           })
         })
       },
-      'mithril': sinon.fake()
+      mithril: sinon.fake()
     };
     includes.mithril.render = sinon.fake();
     proxyquire('../../../src/index.js', includes);
