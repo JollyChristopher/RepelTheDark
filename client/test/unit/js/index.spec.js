@@ -8,12 +8,16 @@ describe('Colyseus Load', function () {
   });
   afterEach(function () {
     console = consolePrev; // eslint-disable-line no-global-assign
+    delete document;
   });
   it('join works', function () {
     console = { // eslint-disable-line no-global-assign
       log: sinon.fake()
     };
-    proxyquire('../../../src/index.js', {
+    document = {
+      body: { }
+    };
+    let includes = {
       'colyseus.js': {
         Client: sinon.fake.returns({
           joinOrCreate: sinon.fake.returns({
@@ -28,8 +32,11 @@ describe('Colyseus Load', function () {
             }
           })
         })
-      }
-    });
+      },
+      'mithril': sinon.fake()
+    };
+    includes.mithril.render = sinon.fake();
+    proxyquire('../../../src/index.js', includes);
     sinon.assert.calledOnce(console.log);
     sinon.assert.calledWith(console.log, 'I', 'joined', 'my_room');
   });
@@ -38,7 +45,10 @@ describe('Colyseus Load', function () {
     console = { // eslint-disable-line no-global-assign
       log: sinon.fake()
     };
-    proxyquire('../../../src/index.js', {
+    document = {
+      body: { }
+    };
+    let includes = {
       'colyseus.js': {
         Client: sinon.fake.returns({
           joinOrCreate: sinon.fake.returns({
@@ -51,8 +61,11 @@ describe('Colyseus Load', function () {
             }
           })
         })
-      }
-    });
+      },
+      'mithril': sinon.fake()
+    };
+    includes.mithril.render = sinon.fake();
+    proxyquire('../../../src/index.js', includes);
     sinon.assert.calledOnce(console.log);
     sinon.assert.calledWith(console.log, 'JOIN ERROR', failureError);
   });
