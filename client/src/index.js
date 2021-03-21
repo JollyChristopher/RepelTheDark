@@ -1,21 +1,33 @@
-const Colyseus = require('colyseus.js');
 const m = require('mithril');
 const root = document.body;
+const Logger = require('js-logger');
+Logger.useDefaults(); // todo: way to set debug level
+const logger = Logger.get('ui-index');
+const MainMenu = require('./routes/menu_main.js').menu;
+const OptionsMenu = require('./routes/menu_options.js').menu;
+const FriendsMenu = require('./routes/menu_friends.js').menu;
+const InvestigatorMenu = require('./routes/menu_investigator.js').menu;
+const Game = require('./routes/game.js').menu;
+const { localize, changeLanguage } = require('./data/localization.js');
 
-m.render(root, [
-  m('h1', 'Hello World!'),
-  m('div', { class: 'ui animated button', tabIndex: 0 }, [
-    m('div', { class: 'visible content' }, 'Next'),
-    m('div', { class: 'hidden content' }, [
-      m('i', { class: 'right arrow icon' })
-    ])
-  ])
-]);
-
-const client = new Colyseus.Client('ws://localhost:2567');
-
-client.joinOrCreate('my_room').then(room => {
-  console.log(room.sessionId, 'joined', room.name);
-}).catch(e => {
-  console.log('JOIN ERROR', e);
+m.route(root, '/main', {
+  '/main': MainMenu,
+  '/options': OptionsMenu,
+  '/friends': FriendsMenu,
+  '/investigator': InvestigatorMenu,
+  '/game': Game
 });
+
+localize({
+  translated: function (key, value) {
+    logger.trace(`Translating '${key}' into '${value}'`);
+    switch(key) {
+      case 'app-title': document.title = value; break;
+    }
+  }
+}, {key: 'app-title'});
+
+let locale = m.route.param('locale');
+if(locale) {
+  changeLanguage(locale);
+}

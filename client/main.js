@@ -1,6 +1,10 @@
 const { app, BrowserWindow } = require('electron');
+const Logger = require('js-logger');
+Logger.useDefaults();
+const logger = Logger.get('main-electron');
 
 function createWindow () {
+  logger.trace('creating window');
   const win = new BrowserWindow({
     width: 800,
     height: 600,
