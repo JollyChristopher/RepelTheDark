@@ -33,7 +33,7 @@
     "@rollup/plugin-node-resolve": "^11.1.0",
     "chai": "^4.2.0",
     "css-loader": "^5.0.1",
-    "electron": "^11.2.0",
+    "electron": "^15.5.5",
     "http-server": "^0.12.3",
     "mocha": "^8.2.1",
     "mochawesome": "^6.2.1",
