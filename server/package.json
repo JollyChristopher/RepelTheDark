@@ -20,7 +20,7 @@
   "devDependencies": {
     "@colyseus/loadtest": "^0.14.0",
     "chai": "^4.2.0",
-    "mocha": "^8.2.1",
+    "mocha": "^10.1.0",
     "mochawesome": "^6.2.1",
     "nyc": "^15.1.0",
     "proxyquire": "^2.1.3",
